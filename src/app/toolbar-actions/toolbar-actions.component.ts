@@ -57,12 +57,12 @@ export class ToolbarActionsComponent implements OnInit {
         this.updateActionsDisplay();
         break;
       case 'edit':
+        this.isFormPage = true;
         this.isCategorySelected = false;
         this.data.toggleDetails(false);
         this.router.navigate(['/edit-category/' + this.selectedCategory]);
         break;
         case 'view details':
-          this.isFormPage = true;
         this.data.toggleDetails(true);
         break;
       case 'new category':
