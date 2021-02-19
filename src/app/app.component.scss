@@ -1,0 +1,20 @@
+.toolbar-container {
+    position: absolute;
+    height: 20%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    background-color: #00af91;
+}
+.content-container {
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    top: 20%;
+    left: 0;    
+    background-color: #00af91;
+}

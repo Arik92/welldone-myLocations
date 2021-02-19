@@ -1,0 +1,24 @@
+.actions {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .action {
+        margin: 10px 10px;
+        .action-btn {
+            padding: 5px;
+            color:white;
+            background-color:indigo;
+            border: 1px solid gray;
+            border-radius: 50%;
+        }
+        .action-btn:hover {
+            cursor: pointer;
+        }
+    }
+}
