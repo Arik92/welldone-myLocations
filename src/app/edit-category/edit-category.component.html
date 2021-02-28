@@ -1,10 +1,9 @@
 <div class="edit-container">
-  <div class="header"><h3>Edit Category</h3></div>
   <form class="form" #f="ngForm" (ngSubmit)="addCategory(f)">
     <label for="currentName">Current Category Name:</label>
     <input disabled id="current-name" type="text" name="currentName" value="{{currentName}}">
       <label for="name">Enter A New Category Name:</label>
     <input id="name" type="text" name="categoryName" ngModel>
-    <button class="submit-btn">Submit</button>
+    <button class="action-btn">Edit</button>
   </form>
 </div>

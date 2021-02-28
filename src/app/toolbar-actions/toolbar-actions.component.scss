@@ -7,18 +7,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
+    justify-content: space-evenly;
     .action {
-        margin: 10px 10px;
-        .action-btn {
-            padding: 5px;
-            color:white;
-            background-color:indigo;
-            border: 1px solid gray;
-            border-radius: 50%;
-        }
-        .action-btn:hover {
-            cursor: pointer;
-        }
+        margin: 10px 10px;        
     }
 }

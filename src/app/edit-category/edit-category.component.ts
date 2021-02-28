@@ -38,7 +38,7 @@ export class EditCategoryComponent implements OnInit {
     const msg = this.validateCategoryName(name);
     if (msg.localeCompare('valid') === 0) {
       this.data.editCategory(this.currentName, name);
-      this.router.navigate(['../categories']);
+      this.router.navigate(['../all-categories']);
     } else {
       alert(msg);
     }

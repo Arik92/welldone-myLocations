@@ -6,8 +6,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/categories', pathMatch: 'full' },
-  { path: 'categories', component: CategoryListComponent },
+  { path: '', redirectTo: '/all-categories', pathMatch: 'full' },
+  { path: 'all-categories', component: CategoryListComponent },
   { path: 'new-category', component: AddCategoryComponent },
   { path: 'edit-category/:name', component: EditCategoryComponent }
 ];

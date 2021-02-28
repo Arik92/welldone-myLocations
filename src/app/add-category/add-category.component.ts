@@ -32,7 +32,7 @@ export class AddCategoryComponent implements OnInit {
     const msg = this.validateCategoryName(name);
     if (msg.localeCompare('valid') === 0) {
       this.data.addCategory(name);
-      this.router.navigate(['../categories']);
+      this.router.navigate(['../all-categories']);
     } else {
       alert(msg);
     }

@@ -8,31 +8,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    .form {
+        position: absolute;
+       height: 100%;
+       width: 100%;
+       top: 0; 
+       left: 0; 
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       .input-container {
+           width: 100%;
+           display: flex;
+           flex-flow: row wrap;
+           align-items: center;
+           justify-content: center;
+           input{
+               margin-left: 15px;
+           } 
+       }
+       .action-btn {
+           margin-top: 15px;
+       }
+   }
 }
-.header {
-    /* position:absolute; */
-    top:25%;
-    left: 30%;
-}
-.form {
-    /* position: absolute; */
-    height: 40%;
-    width: 40%;
-    /* top: 30%; */
-    /* left: 30%; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-.submit-btn {
-    align-self: center;    
-    padding: 5px;
-    color:white;
-    background-color:indigo;
-    border: 1px solid gray;
-    border-radius: 50%;
-}
-.submit-btn:hover {
-    cursor: pointer;
-}
+

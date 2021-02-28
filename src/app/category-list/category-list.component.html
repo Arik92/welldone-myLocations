@@ -1,12 +1,17 @@
 <div class="list-container">  
-  <h3 class="list-header">{{'All Categories' | uppercase}}</h3>
-  <div class="category-content">
+  <div *ngIf="categoryList.length !==0;else empty_state" class="category-container">
+    <div class="category-header"><h3>Choose Category</h3></div>
     <div class="category" *ngFor="let category of categoryList;let i=index"><span class="category-title" [ngClass]="{'selected' : isCurrentlySelected(i)}" (click)="selectCategory(i)">{{category.name}}</span>
       <div *ngIf="showDetailDrawer(i)" class="detail-drawer">
-        <h5>Details:</h5>
+        <h5>Category Details:</h5>
         <div class="category-name">Name - {{category.name}}</div>
       </div>
+    </div>
+  </div>       
+  <ng-template #empty_state>
+    <div class="empty-state-container">
+      There are currently no categories yet. You can Create one by clicking <a [routerLink]="['/new-category']">here</a> or on the "New Category" button above.
     </div>  
-  </div>
+  </ng-template>
   
 </div>

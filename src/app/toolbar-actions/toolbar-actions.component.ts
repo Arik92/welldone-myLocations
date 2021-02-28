@@ -24,10 +24,10 @@ export class ToolbarActionsComponent implements OnInit {
   constructor(private router: Router, private data: DataService) {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationStart) {        
-        if (event.url && event.url.localeCompare('/new-category') === 0) {
+        if (event.url && (event.url.localeCompare('/new-category') === 0) || (event.url.includes('/edit-category') === true)) {
         this.isFormPage = true;
         this.isCategorySelected = false;
-        } else if (event.url && event.url.localeCompare('/categories') === 0) {
+        } else if (event.url && event.url.localeCompare('/all-categories') === 0) {
           this.isFormPage = false;
           this.isCategorySelected = false;
         }
@@ -70,7 +70,7 @@ export class ToolbarActionsComponent implements OnInit {
         this.router.navigate(['/new-category']);
         break;      
       case 'categories list':
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/all-categories']);
         break;
       default: break;  
     }
