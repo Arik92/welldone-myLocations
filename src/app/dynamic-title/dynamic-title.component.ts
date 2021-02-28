@@ -12,13 +12,16 @@ export class DynamicTitleComponent implements OnInit {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationStart) {                 
-        this.title = event.url.replace('/', '');        
+        this.title = event.url.replace('/', '').replace('-', ' ').replace('/', ': ');        
+        if (this.title === '') {
+          this.title = 'All Categories'; // Edge case - base href redirection
+        }
       }     
     });
    }
   
 
-  ngOnInit() {
+  ngOnInit() {    
   }
 
 }

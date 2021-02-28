@@ -11,3 +11,15 @@ body {
 a {
     text-decoration: none;
 }
+.action-btn {
+    width: 125px;
+    padding: 10px;
+    color: white;
+    background-color: indigo;
+    border: 1px solid gold;
+    border-radius: 15%;
+    font-size: 13px;
+}
+.action-btn:hover {
+    cursor: pointer;
+}

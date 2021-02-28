@@ -1,8 +1,9 @@
 <div class="add-container">
-  <div class="header"><h3>Add Category</h3></div>
   <form class="form" #f="ngForm" (ngSubmit)="addCategory(f)">
-      <label for="name">Enter Category Name:</label>
-    <input id="name" type="text" name="categoryName" ngModel>
-    <button class="submit-btn">Submit</button>
+    <div class="input-container">
+      <label for="name">Enter A Category Name:</label>
+      <input id="name" type="text" name="categoryName" ngModel>
+    </div>    
+    <button class="form-btn action-btn">Submit</button>
   </form>
 </div>
