@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService, Category } from '../data.service';
+import { CategoryService, Category } from '../category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -7,31 +7,31 @@ import { DataService, Category } from '../data.service';
   styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
-  categoryList: Category[] = []
+  categoryList: Category[] = [];
   selectedName: string = '';
   showDetails: boolean = false;
 
-  constructor(private data: DataService) { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categoryList = this.data.getAllCategories();
-    this.data.detailSubscription.subscribe(detailFlag => {
+    this.categoryList = this.categoryService.getAllCategories();
+    this.categoryService.detailSubscription.subscribe(detailFlag => {
       this.showDetails = detailFlag;
-    })
+    });
   }
 
   isCurrentlySelected(index: number): boolean {
     return this.categoryList[index].name === this.selectedName;
   }
 
-  showDetailDrawer(index:number):boolean {
+  showDetailDrawer(index: number): boolean {
     return (this.isCurrentlySelected(index) &&(this.showDetails));
   }
   
-  selectCategory(index: number) {
+  selectItem(index: number) {
     this.selectedName = this.categoryList[index].name;
-    this.data.toggleDetails(false);
-    this.data.toggleSelect(this.selectedName); // I want to reserve the option of un-selecting a category in the future
+    this.categoryService.toggleDetails(false);
+    this.categoryService.toggleSelect(this.selectedName); // I want to reserve the option of un-selecting a category in the future
   }
 
 }

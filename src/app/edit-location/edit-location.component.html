@@ -1,0 +1,46 @@
+<div class="form-container">
+  <form [formGroup]="locationForm" class="form" #locationEditForm="ngForm" (ngSubmit)="editLocation(locationEditForm)">
+    <h1>Edit Location</h1>
+      <label for="name">Enter A New Location Name:(Currently {{originalLocation.name}})</label>
+      <input id="name" formControlName="nameControl" type="text" name="locationName" value="{{newLocation.name}}">
+      <label for="address">Enter A Location Address:(Currently {{originalLocation.address}})</label>
+      <input id="address" formControlName="addressControl" type="text" name="locationAddress" value="{{newLocation.address}}">
+      <label for="coordinates">Choose Location's Coordinates:(Drag "New Location" marker to choose)</label>
+      <agm-map id="coordinates"
+      [latitude]="originalMarker.lat"
+      [longitude]="originalMarker.lng"
+      [zoom]="zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="false">
+      <agm-marker 
+      [latitude]="originalMarker.lat"
+      [longitude]="originalMarker.lng"
+      [label]="'Original Location'"
+      [markerDraggable]="false">
+      
+    <agm-info-window>
+      <strong>{{newLocation.name}} Current location</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+  <agm-marker 
+      [latitude]="newMarker.lat"
+      [longitude]="newMarker.lng"
+      [label]="'New Location'"
+      [markerDraggable]="newMarker.draggable"
+      (dragEnd)="markerDragEnd($event)">
+      
+    <agm-info-window>
+      <strong>{{newLocation.name}} Will Be Located Here</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+      </agm-map>
+      <label for="category">Choose A Location Category:(Currently {{originalLocation.category.name}})</label>
+      <select formControlName="categoryControl" name="category" id="category">
+        <option *ngFor="let category of categoryList" [value]="category.name">{{category.name}}</option>
+      </select>
+      
+    <button class="form-btn action-btn">Submit</button>
+  </form>
+</div>

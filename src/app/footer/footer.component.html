@@ -1,0 +1,6 @@
+<div class="mode-container">
+  <div class="mode-header">Choose Mode</div>
+  <div class="mode-btns">
+    <button *ngFor="let mode of possibleModes" (click)="selectMode(mode)" class="mode-btn" [ngClass]="{'selected-mode' : isCurrentlySelected(mode)}">{{mode | titlecase}}</button>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="list-container" [ngClass]="{'detail-expand' : showDetails}">  
+  <div *ngIf="locationList.length !==0;else empty_state" class="item-container">
+    <div class="item-header"><h3>Choose Location</h3>
+      <div *ngIf="!showDetails" class="sort-container">
+        <button (click)="sortAlphabetically()" class="sort-btn">Sort Alphabetically</button>
+        <button (click)="sortByCategory()" class="sort-btn">Sort By Category</button>        
+      </div>      
+      <div *ngIf="!showDetails" class="filter-container">
+        <select class="sort-btn" id="category-filter" [(ngModel)]="selectedFilterCategory">
+          <option [value]="'*all*'">All</option>
+          <option *ngFor="let category of categoryList" [value]="category.name">{{category.name}}</option>
+        </select>
+        <button (click)="filterByCategory()" class="sort-btn filter-btn">Filter By Category</button>
+      </div>
+    </div>
+    <div class="item" *ngFor="let location of locationList;let i=index"><span class="item-title" [ngClass]="{'selected' : isCurrentlySelected(i)}" (click)="selectItem(i)">{{location.name}}</span>
+      <div *ngIf="showDetailDrawer(i)" class="map-detail-drawer">
+        <h5>Location Details:</h5>
+        <div class="location-name">Name - {{location.name}}</div>
+        <div class="location-address">Address - {{location.address}}</div>
+        <div class="location-coords">Coordinates:</div>
+        <div class="coords-lat">Lat - {{location.coordinates.lat}}</div>
+        <div class="coords-lng">Lng - {{location.coordinates.lng}}</div>
+        <div class="detail-map">
+          <agm-map id="location-map"
+      [latitude]="location.coordinates.lat"
+      [longitude]="location.coordinates.lng"
+      [zoom]="zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="false">
+      <agm-marker 
+      [latitude]="location.coordinates.lat"
+      [longitude]="location.coordinates.lng"
+      [label]="location.name"
+      [markerDraggable]="false">
+      
+    <agm-info-window>
+      <strong>{{location.name}}'s location </strong>
+    </agm-info-window>
+    
+  </agm-marker>
+      </agm-map>
+        </div>
+        <div class="location-category">Category - {{location.category.name}}</div>
+      </div>
+    </div>
+  </div>       
+  <ng-template #empty_state>
+    <div class="empty-state-container">
+      There are currently no locations with that category yet. You can Create one by clicking <a [routerLink]="['/new-location']">here</a> or on the "New Location" button above.
+      <span *ngIf="resetFilterFlag" class="clear-filters">
+        Click <button (click)="resetFilters()">Here</button>  to clear category filters.
+      </span>
+    </div>  
+  </ng-template>
+  
+</div>

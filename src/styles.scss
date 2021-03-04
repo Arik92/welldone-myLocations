@@ -20,6 +20,104 @@ a {
     border-radius: 15%;
     font-size: 13px;
 }
-.action-btn:hover {
+.action-btn:hover, .mode-btn:hover {
     cursor: pointer;
 }
+
+/*Item lists */
+.list-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0; 
+    .item-container, .empty-state-container {
+    position: absolute;
+    height: 98%;
+    width: 98%;
+    top: 2%;
+    left: 2%;    
+    border: 2px solid #212529;
+    border-radius: 5%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .item {
+        display: flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content: center;
+    }    
+    .item-title {
+        user-select: none;
+    }
+    .item:hover {
+        cursor: pointer;
+    }
+    .selected {
+        color: goldenrod;
+    }
+    .detail-drawer {
+        height: 100px;
+        width: 200px;
+        color: #ffcc29;
+        border: 1px solid #ffcc29;
+        border-radius: 5%;
+        background-color: #55595D;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .map-detail-drawer {
+        height: 400px;
+        width: 350px;
+        color: #ffcc29;
+        border: 1px solid #ffcc29;
+        border-radius: 5%;
+        background-color: #55595D;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+/* form styling */
+.form-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    .form {
+        position: absolute;
+       height: 100%;
+       width: 100%;
+       top: 0; 
+       left: 0; 
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;       
+       .action-btn {
+           margin-top: 15px;
+       }       
+   }
+}
+
+
+
+/* google map specific */
+agm-map {
+    height: 200px;
+    width: 300px;
+    color: black;
+  }
