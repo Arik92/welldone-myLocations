@@ -1,0 +1,36 @@
+.item-header {
+    height: 20%;
+    width: 100%;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .sort-btn {
+        width: 165px;
+    }
+    .filter-btn {
+        color: white;
+        background-color:rgb(100, 100, 100);
+        border: 1px solid transparent;
+        border-radius: 5%;
+    }
+    .filter-selector {
+        width: 65px;
+    }
+    .sort-container {
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .filter-container {
+        margin: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+.detail-expand {    
+    height: 120%;
+}

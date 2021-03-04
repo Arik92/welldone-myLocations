@@ -9,9 +9,19 @@
 }
 .content-container {
     position: absolute;
-    height: 90%;
+    height: 80%;
     width: 100%;
     top: 10%;
     left: 0;    
     background-color: #D5D9DD;
+    overflow-y: auto;
+}
+.footer-container {
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    top: 90%;
+    left: 0;
+    color: white;    
+    background-color: #212529;
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DataService } from '../data.service';
+import { CategoryService } from '../category.service';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -11,7 +12,8 @@ import { DataService } from '../data.service';
 export class EditCategoryComponent implements OnInit {
   currentName: string = '';
 
-  constructor(private data: DataService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute,
+    private locationService: LocationService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -33,11 +35,12 @@ export class EditCategoryComponent implements OnInit {
     return msg;
   }
 
-  addCategory(form: NgForm) {
+  editCategory(form: NgForm) {
     const name = form.value.categoryName;
     const msg = this.validateCategoryName(name);
     if (msg.localeCompare('valid') === 0) {
-      this.data.editCategory(this.currentName, name);
+      this.categoryService.editCategory(this.currentName, name);
+      this.locationService.updateAfterCategoryEdit(this.currentName, name);
       this.router.navigate(['../all-categories']);
     } else {
       alert(msg);

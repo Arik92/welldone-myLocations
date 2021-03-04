@@ -1,0 +1,35 @@
+<div class="form-container">
+  <form class="form" #locationForm="ngForm" (ngSubmit)="addLocation(locationForm)">
+    <h1>Add Location</h1>
+      <label for="name">Enter A Location Name:</label>
+      <input id="name" type="text" name="locationName" ngModel>
+      <label for="address">Enter A Location Address:</label>
+      <input id="address" type="text" name="locationAddress" ngModel>
+      <label for="coordinates">Choose Location's Coordinates:(Drag marker to choose)</label>
+      <agm-map id="coordinates"
+      [latitude]="mapLat"
+      [longitude]="mapLng"
+      [zoom]="zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="false">
+      <agm-marker 
+      [latitude]="marker.lat"
+      [longitude]="marker.lng"
+      [label]="locationForm.value.locationName"
+      [markerDraggable]="marker.draggable"
+      (dragEnd)="markerDragEnd($event)">
+      
+    <agm-info-window>
+      <strong>{{locationForm.value.locationName}} Will Be Located Here</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+      </agm-map>
+      <label for="category">Choose A Location Category:</label>
+      <select name="category" id="category" ngModel>
+        <option *ngFor="let category of categoryList" [value]="category.name">{{category.name}}</option>
+      </select>
+      
+    <button class="form-btn action-btn">Submit</button>
+  </form>
+</div>

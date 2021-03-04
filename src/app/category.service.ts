@@ -5,23 +5,16 @@ export interface Category {
   name: string  
 };
 
-export interface Location {
-  name: string,
-  address: string,
-  coordinates: number[],
-  category: Category
-};
-
 @Injectable({
   providedIn: 'root'
 })
 
 
-export class DataService {
+export class CategoryService {
   selectSubscription: BehaviorSubject<string> = new BehaviorSubject('');
   detailSubscription: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  categoryList: Category[];
+  categoryList: Category[] = [];
 
   constructor() {
     this.categoryList = JSON.parse(localStorage.getItem('categories')) ? JSON.parse(localStorage.getItem('categories')) : [];
@@ -30,6 +23,13 @@ export class DataService {
 
   getAllCategories() {
     return this.categoryList;
+  }
+
+  getCategoryByName(name: string): Category {
+    const res = this.categoryList.filter(category => {
+      return category.name.localeCompare(name) === 0;
+    });
+      return res[0];
   }
 
 

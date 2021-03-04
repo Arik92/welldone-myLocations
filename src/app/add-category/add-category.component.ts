@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class AddCategoryComponent implements OnInit {
 
-  constructor(private router: Router, private data: DataService) { }
+  constructor(private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {
   }
@@ -31,7 +31,7 @@ export class AddCategoryComponent implements OnInit {
     const name = form.value.categoryName;
     const msg = this.validateCategoryName(name);
     if (msg.localeCompare('valid') === 0) {
-      this.data.addCategory(name);
+      this.categoryService.addCategory(name);
       this.router.navigate(['../all-categories']);
     } else {
       alert(msg);
